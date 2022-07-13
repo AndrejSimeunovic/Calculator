@@ -75,6 +75,12 @@ function checkIfZeroBefore(nbrClicked) {
       array.splice(zeroIndex, 1);
       result.innerText = array.join("");
     }
+  } else {
+    let dots = a.filter((d) => d === ".");
+    if (dots.length > 0 && nbrClicked === ".") {
+      array.splice(array.length - 1, 1);
+      result.innerText = array.join("");
+    }
   }
 }
 
