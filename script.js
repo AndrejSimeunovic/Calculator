@@ -14,7 +14,6 @@ let deleted = false;
 let sub = [];
 const selection = ["+", "-", "÷", "*"];
 let operations = [];
-let numPressed = false;
 let numbers = [];
 
 btnNumbers.forEach((button) => button.addEventListener("click", displayNbr));
