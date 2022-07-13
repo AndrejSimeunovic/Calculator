@@ -6,7 +6,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #00AAFF, #00FF6C);
+    background: linear-gradient(to right, #00AAFF, purple);
 }
 
 .grid-container {
@@ -14,8 +14,9 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    grid-template-columns: repeat(4,100px);
+    grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    gap: 10px;
 }
 
 .screen {
@@ -34,18 +35,35 @@ body {
 }
 
 button {
+    background-color: yellowgreen;
+    border: 1px solid whitesmoke;
     font-weight: 900;
     font-size: x-large;
+    cursor: pointer;
+    transition-property: transform, box-shadow;
+    transition-duration: .6s;
 }
+
+button:hover {
+    background-color: #00AAFF;
+}
+
+button:active {
+    font-size: 1rem;
+    transform: scale(.9);
+    box-shadow: 0 3px 15px -2px;
+}
+
 
 .result {
     font-size: x-large;
     text-align: end;
+    margin-top: 40px;
 }
 
 .operator {
     text-align: end;
     opacity: .5;
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 18px;
+
 }
