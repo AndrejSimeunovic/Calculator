@@ -58,9 +58,19 @@ function checkOperation(nbrClicked) {
 
 function checkIfZeroBefore(nbrClicked) {
   let array = result.innerText.split("");
+  let a = array.slice(
+    array.lastIndexOf(operations[operations.length - 1]) + 1,
+    array.lastIndexOf(nbrClicked)
+  );
+  if (nbrClicked === "0" && (a[0] !== "0" || a.length === 0)) {
+    return;
+  }
   if (checkDot(array)) {
     let index = array.lastIndexOf(nbrClicked);
-    if (array[index - 1] === "0") {
+    if ((a[0] === "0" || a.length === 0) && array[index - 1]) {
+      if (array[index - 1] === operator) {
+        return;
+      }
       let zeroIndex = index - 1;
       array.splice(zeroIndex, 1);
       result.innerText = array.join("");
@@ -88,10 +98,13 @@ function checkDot(array) {
 }
 
 function getEquals() {
-  let e = result.innerText.split(operator)
-  let checkZ = e[e.length-1]
-  if((+checkZ === 0 || checkZ === '.')  && operations[operations.length-1] === "÷"){
-    alert('You cannot divide by zero or dot')
+  let e = result.innerText.split(operator);
+  let checkZ = e[e.length - 1];
+  if (
+    (+checkZ === 0 || checkZ === ".") &&
+    operations[operations.length - 1] === "÷"
+  ) {
+    alert("You cannot divide by zero or dot");
     return;
   }
   result.innerText = subResult;
@@ -144,6 +157,54 @@ function beginOp() {
   subValue.innerText = subResult;
 }
 
+function add(a, b) {
+  return a + b;
+}
+function substract(a, b) {
+  return a - b;
+}
+function multiply(a, b) {
+  return a * b;
+}
+function divide(a, b) {
+  return a / b;
+}
+function operate(a, b, operator) {
+  a = +a;
+  b = +b;
+  let result;
+  switch (operator) {
+    case "+":
+      result = add(a, b);
+      break;
+    case "-":
+      result = substract(a, b);
+      break;
+    case "*":
+      result = multiply(a, b);
+      break;
+    case "÷":
+      result = divide(a, b);
+      break;
+
+    default:
+      break;
+  }
+  return result;
+}
+
+// function checkIfZeroBefore(nbrClicked) {
+//   let array = result.innerText.split("");
+//   if (checkDot(array)) {
+//     let index = array.lastIndexOf(nbrClicked);
+//     if (array[index - 1] === "0") {
+//       let zeroIndex = index - 1;
+//       array.splice(zeroIndex, 1);
+//       result.innerText = array.join("");
+//     }
+//   }
+// }
+
 // function updateBackwards() {
 //   let arr = result.innerText.split("");
 //   if (arr.length === 1) {
@@ -191,39 +252,3 @@ function beginOp() {
 //   deleted = true;
 //   console.log("numberrrrrr: " + number);
 // }
-
-function add(a, b) {
-  return a + b;
-}
-function substract(a, b) {
-  return a - b;
-}
-function multiply(a, b) {
-  return a * b;
-}
-function divide(a, b) {
-  return a / b;
-}
-function operate(a, b, operator) {
-  a = +a;
-  b = +b;
-  let result;
-  switch (operator) {
-    case "+":
-      result = add(a, b);
-      break;
-    case "-":
-      result = substract(a, b);
-      break;
-    case "*":
-      result = multiply(a, b);
-      break;
-    case "÷":
-      result = divide(a, b);
-      break;
-
-    default:
-      break;
-  }
-  return result;
-}
