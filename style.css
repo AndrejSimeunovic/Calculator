@@ -21,6 +21,7 @@ body {
 
 .screen {
     background-color: black;
+    opacity: .75;
     color: white;
     grid-column: 1 / 5;
     display: flex;
